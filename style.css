@@ -24,6 +24,17 @@ body {
     z-index: 1000;                         /* Ensures it's above most other content */
     transition: all 0.3s ease;             /* Smooth transition for hover effects */
     cursor: pointer;                       /* Indicates it's interactive */
+    /* Initially hidden, controlled by app.js */
+    display: none;
+}
+
+/* Telegram Login Button Container */
+#telegram-login-button-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000; /* Ensure it's above other content */
+    /* Initially visible, controlled by app.js */
 }
 
 /* Profile Avatar */
@@ -45,13 +56,6 @@ body {
     white-space: nowrap; /* Prevent username from wrapping */
 }
 
-/* Optional: User Status Styling */
-#user-status {
-    font-size: 0.75em;
-    color: #888;
-    margin-left: auto; /* Pushes status to the right if present */
-}
-
 /* Hover Effect for the Entire Container */
 #profile-container:hover {
     background: rgba(255, 255, 255, 0.95); /* Slightly less transparent on hover */
@@ -62,26 +66,16 @@ body {
     transform: scale(1.1); /* Slightly enlarge avatar on hover */
 }
 
-/* Optional: Add a loading state */
-#profile-container.loading {
-    opacity: 0.7;
-    cursor: progress;
-}
-
-/* Default Avatar Placeholder */
-/* You should have a default-avatar.png in an 'images' folder */
-/* Ensure your default avatar is also styled if needed */
-#profile-avatar[src*="default-avatar.png"] {
-    /* You might want to make the default avatar a bit more stylized */
-    border-color: rgba(0, 0, 0, 0.05);
-}
-
 /* Responsive Adjustments (Optional but good practice) */
 @media (max-width: 768px) {
     #profile-container {
         top: 10px;
         right: 10px;
         padding: 6px 10px;
+    }
+    #telegram-login-button-container {
+        top: 10px;
+        right: 10px;
     }
     #profile-avatar {
         width: 30px;
@@ -98,6 +92,11 @@ body {
         right: 5px;
         padding: 4px 8px;
         transform: scale(0.9); /* Slightly shrink on very small screens */
+    }
+    #telegram-login-button-container {
+        top: 5px;
+        right: 5px;
+        transform: scale(0.9);
     }
     #profile-avatar {
         width: 28px;
