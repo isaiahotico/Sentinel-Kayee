@@ -1,108 +1,241 @@
-/* Basic Reset & Body Styling */
+/* General body styling for context */
 body {
-    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5; /* A subtle background */
-    color: #333;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background for indie look */
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Profile Container - Top-Right Positioning */
+/* --- Layout and Positioning --- */
+.login-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* --- Top Left: Coin Display --- */
+.top-left-widget {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #008000; /* Green background for coins */
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Top Right: Profile and Action Buttons Container --- */
+#top-right-widgets {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* --- Profile Container (Indie Look) --- */
 #profile-container {
-    position: fixed; /* Fixes it to the viewport */
-    top: 15px;       /* Distance from the top */
-    right: 15px;     /* Distance from the right */
     display: flex;
     align-items: center;
-    gap: 10px;       /* Space between avatar and username */
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
-    backdrop-filter: blur(8px);            /* Blurs the content behind it */
-    -webkit-backdrop-filter: blur(8px);    /* For Safari compatibility */
-    border-radius: 20px;                   /* Rounded corners for an indie feel */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    z-index: 1000;                         /* Ensures it's above most other content */
-    transition: all 0.3s ease;             /* Smooth transition for hover effects */
-    cursor: pointer;                       /* Indicates it's interactive */
-    /* Initially hidden, controlled by app.js */
-    display: none;
+    gap: 10px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.05); /* Transparent background */
+    backdrop-filter: blur(10px); /* The blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-/* Telegram Login Button Container */
-#telegram-login-button-container {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1000; /* Ensure it's above other content */
-    /* Initially visible, controlled by app.js */
-}
-
-/* Profile Avatar */
-#profile-avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%; /* Makes it round */
-    object-fit: cover; /* Ensures image covers the area without distortion */
-    border: 2px solid rgba(0, 0, 0, 0.1); /* Subtle border */
-    transition: transform 0.3s ease;
-}
-
-/* Telegram Username */
-#telegram-username {
-    font-size: 0.95em;
-    font-weight: 500;
-    color: #007aff; /* A nice blue for links/usernames */
-    text-decoration: none; /* No underline by default */
-    white-space: nowrap; /* Prevent username from wrapping */
-}
-
-/* Hover Effect for the Entire Container */
 #profile-container:hover {
-    background: rgba(255, 255, 255, 0.95); /* Slightly less transparent on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
-#profile-container:hover #profile-avatar {
-    transform: scale(1.1); /* Slightly enlarge avatar on hover */
+#profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Responsive Adjustments (Optional but good practice) */
-@media (max-width: 768px) {
-    #profile-container {
-        top: 10px;
-        right: 10px;
-        padding: 6px 10px;
-    }
-    #telegram-login-button-container {
-        top: 10px;
-        right: 10px;
-    }
-    #profile-avatar {
-        width: 30px;
-        height: 30px;
-    }
-    #telegram-username {
-        font-size: 0.9em;
-    }
+#telegram-username {
+    font-weight: bold;
+    color: #ffffff;
 }
 
-@media (max-width: 480px) {
-    #profile-container {
-        top: 5px;
-        right: 5px;
-        padding: 4px 8px;
-        transform: scale(0.9); /* Slightly shrink on very small screens */
-    }
-    #telegram-login-button-container {
-        top: 5px;
-        right: 5px;
-        transform: scale(0.9);
-    }
-    #profile-avatar {
-        width: 28px;
-        height: 28px;
-    }
-    #telegram-username {
-        font-size: 0.85em;
-    }
+/* --- Action Buttons --- */
+.action-button {
+    padding: 10px 15px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    white-space: nowrap; /* Prevents button text from wrapping */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Modal (Daily Ads Room) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}.modal-content {
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#ad-slots-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ad-slot {
+    background-color: #3a3a3a;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #555;
+}
+
+.ad-slot button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #28a745; /* Success Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.ad-slot button:hover:not(:disabled) {
+    background-color: #1e7e34;
+}
+
+.ad-slot button:disabled {
+    background-color: #6c757d; /* Grey when cooling down */
+    cursor: not-allowed;
+}
+
+.ad-timer {
+    font-size: 0.9em;
+    color: #ffc107; /* Yellow for timer */
+    margin-bottom: 5px;
+}
+
+.close-button {
+    margin-top: 20px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- Activity Page Styles (for activity.html) --- */
+.page-container { 
+    padding: 20px; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    color:#eaeaea; 
+}
+.page-header { 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    gap:12px; 
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+.back-link { 
+    color:#9ecbff; 
+    text-decoration:none; 
+    font-weight:600; 
+    font-size: 1.1em;
+}
+.header-balance { 
+    background:#0a7a2a; 
+    color:#fff; 
+    padding:8px 12px; 
+    border-radius:8px; 
+    font-weight:700; 
+}
+.activity-main { 
+    margin-top:20px; 
+}
+.activity-buttons { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap:16px; 
+    margin-top:16px; 
+}
+.activity-card { 
+    background:#2f2f2f; 
+    padding:16px; 
+    border-radius:10px; 
+    border:1px solid #444; 
+    text-align: center;
+}
+.activity-card h3 { 
+    margin:0 0 8px 0; 
+    font-size:1.05em; 
+}
+.activity-timer { 
+    color:#ffcc00; 
+    margin-bottom:8px; 
+    font-weight: 500;
+}
+.activity-card button { 
+    width: 100%;
+    background:#007bff; 
+    border:none; 
+    padding:10px 12px; 
+    color:white; 
+    border-radius:6px; 
+    cursor:pointer; 
+    font-weight:700; 
+    transition: background-color 0.2s;
+}
+.activity-card button:hover:not(:disabled) {
+    background: #0056b3;
+}
+.activity-card button:disabled { 
+    background:#6c757d; 
+    cursor:not-allowed; 
 }
