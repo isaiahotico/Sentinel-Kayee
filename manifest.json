@@ -1,19 +1,19 @@
 {
-  "name": "Sentinel KRo Earning App",
-  "short_name": "KRo Earn",
-  "description": "Earn PESO rewards by viewing ads and referring friends.",
-  "start_url": "/index.html",
+  "name": "Reward Rooms App",
+  "short_name": "Rewards",
+  "description": "Earn daily and activity rewards by watching ads.",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#1a1a1a",
-  "theme_color": "#008000",
+  "background_color": "#f4f4f4",
+  "theme_color": "#007bff",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
