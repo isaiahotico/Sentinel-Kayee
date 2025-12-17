@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sentinel KRo Earning App</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <!-- Telegram Login Widget -->
-  <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
 </head>
 <body>
+
+  <!-- Login/Username Section -->
+  <div id="login-section">
+    <h2>Enter Your Username</h2>
+    <input type="text" id="username-input" placeholder="Enter a username" />
+    <button id="login-button" class="action-button">Login</button>
+    <p id="error-message" class="error-text"></p>
+  </div>
+
   <!-- TOP LEFT: Coin Display -->
-  <div id="coin-display-container" class="top-left-widget">
+  <div id="coin-display-container" class="top-left-widget" style="display:none;">
     <span id="coin-balance">0.00</span> PESO
   </div>
 
   <!-- TOP RIGHT: Buttons + Profile -->
-  <div id="top-right-widgets">
-    <a id="activity-room-link" href="#" style="display:none;"><button class="action-button">ACTIVITY REWARD ROOM</button></a>
-    <a id="referral-room-link" href="#" style="display:none;"><button class="action-button">REFERRAL ROOM</button></a>
+  <div id="top-right-widgets" style="display:none;">
+    <a id="activity-room-link" href="#" style="display:none;">
+      <button class="action-button">ACTIVITY REWARD ROOM</button>
+    </a>
+    <a id="referral-room-link" href="#" style="display:none;">
+      <button class="action-button">REFERRAL ROOM</button>
+    </a>
     <button id="ads-room-button" class="action-button" style="display:none;">Daily Ads Room Reward</button>
     <div id="profile-container" style="display:none;">
-      <img id="profile-avatar" src="default-avatar.png" alt="Avatar" />
-      <span id="telegram-username">@loading...</span>
+      <span id="username-display">@loading...</span>
     </div>
   </div>
 
   <!-- VIEWS (Single Page App) -->
-  <main id="view-main" class="view">
+  <main id="view-main" class="view" style="display:none;">
     <div id="telegram-login-widget" class="login-center">
-      <h2 id="login-title">Log in with Telegram to start earning:</h2>
-      <div id="widget-placeholder"></div>
-      <p id="login-note" class="muted small">If you see a domain error, register your app domain in BotFather (see comments in app.js).</p>
+      <h2>Welcome to Sentinel KRo Earning App!</h2>
     </div>
   </main>
 
@@ -55,7 +63,8 @@
         <a href="#" class="back-link" id="back-from-activity">← Back</a>
         <h1>Activity Reward Room</h1>
         <div id="activity-header-balance" class="header-balance">0.00 PESO</div>
-      </header>      <main class="activity-main">
+      </header>
+      <main class="activity-main">
         <p>Each button shows 2 interstitial ads sequentially. Complete both to earn 0.02 PESO. Per-button cooldown: 5 minutes.</p>
         <div id="activity-buttons" class="activity-buttons"></div>
       </main>
@@ -84,15 +93,6 @@
       </main>
     </div>
   </section>
-
-  <!-- Modal fallback (not used for SPA navigation but kept for earlier modal pattern) -->
-  <div id="ads-room-modal" class="modal" style="display:none;">
-    <div class="modal-content">
-      <h2>Daily Ads Room</h2>
-      <div id="modal-ad-slots"></div>
-      <button id="modal-close-btn" class="close-button">Close</button>
-    </div>
-  </div>
 
   <script type="module" src="app.js"></script>
 </body>
