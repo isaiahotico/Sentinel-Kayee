@@ -1,70 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel KRo Earning App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Include Telegram Login Widget Script -->
-    <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sentinel KRo Earning App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <!-- Telegram Login Widget -->
+  <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
 </head>
 <body>
+  <!-- TOP LEFT: Coin Display -->
+  <div id="coin-display-container" class="top-left-widget">
+    <span id="coin-balance">0.00</span> PESO
+  </div>
 
-    <!-- TOP LEFT: Coin Display -->
-    <div id="coin-display-container" class="top-left-widget">
-        <span id="coin-balance">0.00</span> PESO
+  <!-- TOP RIGHT: Buttons + Profile -->
+  <div id="top-right-widgets">
+    <a id="activity-room-link" href="#" style="display:none;"><button class="action-button">ACTIVITY REWARD ROOM</button></a>
+    <a id="referral-room-link" href="#" style="display:none;"><button class="action-button">REFERRAL ROOM</button></a>
+    <button id="ads-room-button" class="action-button" style="display:none;">Daily Ads Room Reward</button>
+    <div id="profile-container" style="display:none;">
+      <img id="profile-avatar" src="default-avatar.png" alt="Avatar" />
+      <span id="telegram-username">@loading...</span>
     </div>
+  </div>
 
-    <!-- TOP RIGHT: Profile and Action Buttons -->
-    <div id="top-right-widgets">
-        
-        <!-- Activity Room Link -->
-        <a id="activity-room-link" href="activity.html" style="display:none;">
-            <button class="action-button">ACTIVITY REWARD ROOM</button>
-        </a>
+  <!-- VIEWS (Single Page App) -->
+  <main id="view-main" class="view">
+    <div id="telegram-login-widget" class="login-center">
+      <h2 id="login-title">Log in with Telegram to start earning:</h2>
+      <div id="widget-placeholder"></div>
+      <p id="login-note" class="muted small">If you see a domain error, register your app domain in BotFather (see comments in app.js).</p>
+    </div>
+  </main>
 
-        <!-- Ads Room Button -->
-        <button id="ads-room-button" class="action-button" style="display: none;">
-            Daily Ads Room Reward
-        </button>
-        
-        <!-- Profile Container (Initially Hidden, shown after Telegram login) -->
-        <div id="profile-container" style="display: none;">
-            <img id="profile-avatar" src="default-avatar.png" alt="User Avatar">
-            <span id="telegram-username">@loading...</span>
+  <section id="view-ads-room" class="view" style="display:none;">
+    <div class="page-container">
+      <header class="page-header">
+        <a href="#" class="back-link" id="back-from-ads">← Back</a>
+        <h1>Daily Ads Room</h1>
+        <div id="ads-header-balance" class="header-balance">0.00 PESO</div>
+      </header>
+      <main class="activity-main">
+        <p>Watch the ads below (5s) to earn 0.01 PESO each. 2-hour cooldown per ad.</p>
+        <div id="ad-slots-container" class="activity-buttons"></div>
+      </main>
+    </div>
+  </section>
+
+  <section id="view-activity" class="view" style="display:none;">
+    <div class="page-container">
+      <header class="page-header">
+        <a href="#" class="back-link" id="back-from-activity">← Back</a>
+        <h1>Activity Reward Room</h1>
+        <div id="activity-header-balance" class="header-balance">0.00 PESO</div>
+      </header>      <main class="activity-main">
+        <p>Each button shows 2 interstitial ads sequentially. Complete both to earn 0.02 PESO. Per-button cooldown: 5 minutes.</p>
+        <div id="activity-buttons" class="activity-buttons"></div>
+      </main>
+    </div>
+  </section>
+
+  <section id="view-referral" class="view" style="display:none;">
+    <div class="page-container">
+      <header class="page-header">
+        <a href="#" class="back-link" id="back-from-referral">← Back</a>
+        <h1>Referral Room</h1>
+        <div id="referral-header-balance" class="header-balance">0.00 PESO</div>
+      </header>
+      <main class="activity-main">
+        <h2>Your Referral Link</h2>
+        <div class="referral-box">
+          <input type="text" id="referral-link-input" readonly value="Loading Link..." />
+          <button id="copy-link-button" class="action-button">Copy Link</button>
         </div>
-    </div>
-
-    <!-- MAIN CONTENT AREA -->
-    <div id="app-content">
-        <!-- Telegram Login Widget -->
-        <div id="telegram-login-widget" class="login-center">
-            <h2>Log in with Telegram to start earning:</h2>
-            <script type="text/javascript">
-                // IMPORTANT: Replace 'Sentinel_KRo_earning_bot' with your actual bot username.
-                // data-onauth calls the JavaScript function TelegramLoginWidgetCallback defined in app.js
-                document.write(
-                    '<script data-telegram-login="Sentinel_KRo_earning_bot" data-size="large" data-userpic="false" data-onauth="TelegramLoginWidgetCallback(user)"></' + 'script>'
-                );
-            </script>
+        <div class="referral-stats">
+          <h3>Referral Statistics</h3>
+          <p>Total Referrals: <span id="total-referrals">0</span></p>
+          <p>Pending Referral Earnings: <span id="pending-earnings">0.00 PESO</span></p>
+          <p class="note">You earn 10% of your referral's withdrawal amount (calculated on withdrawal).</p>
         </div>
+      </main>
     </div>
+  </section>
 
-    <!-- Ads Room Modal (Hidden by default) -->
-    <div id="ads-room-modal" class="modal">
-        <div class="modal-content">
-            <h2>Daily Ads Room</h2>
-            <p>Watch the ads below to earn 0.01 PESO each (5s view time).</p>
-            <div id="ad-slots-container">
-                <!-- Ad slots will be populated here by app.js -->
-            </div>
-            <button id="close-modal-button" class="close-button">Close</button>
-        </div>
+  <!-- Modal fallback (not used for SPA navigation but kept for earlier modal pattern) -->
+  <div id="ads-room-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Daily Ads Room</h2>
+      <div id="modal-ad-slots"></div>
+      <button id="modal-close-btn" class="close-button">Close</button>
     </div>
+  </div>
 
-    <!-- Link to the main application logic -->
-    <script src="app.js" type="module"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
