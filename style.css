@@ -1,87 +1,159 @@
-/* General */
+/* style.css */
+
+:root {
+    --primary-color: #0366d6; /* GitHub blue */
+    --background-color: #f6f8fa; /* Light GitHub background */
+    --card-bg: #ffffff;
+    --text-color: #24292e;
+    --border-color: #e1e4e8;
+    --reward-color: #28a745; /* Green for rewards */
+    --cooldown-color: #d73a49; /* Red for cooldown */
+}
+
+• {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-  min-height: 100vh;
-  overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
 }
 
-/* Top Left - coins */
-.top-left-widget {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px 15px;
-  background-color: #008000;
-  border-radius: 8px;
-  font-size: 1.1em;
-  font-weight: 700;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Top Right */
-#top-right-widgets {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 12px;
-  z-index: 1000;
-  align-items: center;
+.header h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
-/* Profile */
-#profile-container {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
+/* --- New Reward Room Styles --- */
+
+.activity-button, .back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--reward-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
-#user-id-display { font-weight:700; color:#fff; }
 
-/* Buttons */
-.action-button {
-  padding: 10px 14px;
-  background: #007bff;
-  border: none;
-  color: #fff;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
+.activity-button:hover, .back-button:hover {
+    background-color: #218838;
 }
-.action-button:hover { background: #0056b3; }
 
-/* Views & layout */
-.view { padding: 24px; min-height: 100vh; box-sizing: border-box; }
-.page-container { padding: 12px 18px; max-width: 980px; margin: 0 auto; }
-.page-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:10px; border-bottom:1px solid #333; }
-.back-link { color:#9ecbff; text-decoration:none; font-weight:600; font-size:1rem; }
-.header-balance { background:#0a7a2a; color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; }
+.balance-info {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--reward-color);
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid var(--reward-color);
+    display: inline-block;
+    border-radius: 4px;
+}
 
-/* Ad/ad-slot styles */
-.activity-buttons { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:16px; }
-.ad-slot, .activity-card { background:#2f2f2f; padding:14px; border-radius:10px; border:1px solid #444; text-align:center; }
-.ad-slot button, .activity-card button { width:100%; padding:10px; border-radius:8px; border:none; background:#28a745; color:white; font-weight:700; cursor:pointer; }
-.ad-slot button:disabled, .activity-card button:disabled { background:#6c757d; cursor:not-allowed; }
-.ad-timer, .activity-timer { color:#ffcc00; margin-bottom:8px; font-weight:600; }
+#reward-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto;
+}
 
-/* Referral */
-.referral-box { display:flex; gap:8px; margin:12px 0; }
-.referral-box input { flex:1; padding:10px; border-radius:8px; border:1px solid #444; background:#1f1f1f; color:#fff; }
-.referral-stats { margin-top:12px; color:#ddd; }
+.reward-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
 
-/* Responsive tweaks */
-@media (max-width:600px) {
-  .top-left-widget { font-size:1rem; padding:8px 10px; }
-  #top-right-widgets { gap:8px; right:12px; }
-  .action-button { padding:8px 10px; font-size:0.9rem; }
+.reward-button:hover:not(:disabled) {
+    background-color: #005cc5;
+}
+
+.reward-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #6a737d; /* Gray when disabled */
+}
+
+.reward-button.cooldown {
+    background-color: var(--cooldown-color);
+}
+
+/* --- Existing Ad Card Styles --- */
+
+#ads-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ad-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(27, 31, 35, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ad-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(27, 31, 35, 0.15);
+}
+
+.ad-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.ad-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.ad-link:hover {
+    background-color: #005cc5;
+}
+
+.featured {
+    border: 2px solid #f9c513;
+    background-color: #fffbe6;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    font-size: 0.8em;
+    color: #6a737d;
+    border-top: 1px solid var(--border-color);
 }
