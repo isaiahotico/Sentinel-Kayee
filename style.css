@@ -1,241 +1,99 @@
-/* General body styling for context */
+/* General */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1a1a1a; /* Dark background for indie look */
-    color: #e0e0e0;
-    min-height: 100vh;
-    overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* --- Layout and Positioning --- */
-.login-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-/* --- Top Left: Coin Display --- */
+/* Top Left - coins */
 .top-left-widget {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 15px;
-    background-color: #008000; /* Green background for coins */
-    border-radius: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: #008000;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 700;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* --- Top Right: Profile and Action Buttons Container --- */
+/* Top Right */
 #top-right-widgets {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+  align-items: center;
 }
 
-/* --- Profile Container (Indie Look) --- */
+/* Profile */
 #profile-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.05); /* Transparent background */
-    backdrop-filter: blur(10px); /* The blur effect */
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
+#profile-container:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
+#profile-avatar { width: 40px; height:40px; border-radius:50%; object-fit:cover; border: 2px solid rgba(255,255,255,0.2); }
+#telegram-username { font-weight:700; color:#fff; }
 
-#profile-container:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-#profile-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-#telegram-username {
-    font-weight: bold;
-    color: #ffffff;
-}
-
-/* --- Action Buttons --- */
+/* Buttons */
 .action-button {
-    padding: 10px 15px;
-    background-color: #007bff; /* Blue button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-    white-space: nowrap; /* Prevents button text from wrapping */
+  padding: 10px 14px;
+  background: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
 }
+.action-button:hover { background: #0056b3; }
 
-.action-button:hover {
-    background-color: #0056b3;
-}
+/* Views & layout */
+.view { padding: 24px; min-height: 100vh; box-sizing: border-box; }
+.login-center { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); text-align:center; }
 
-/* --- Modal (Daily Ads Room) --- */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: none; /* Hidden by default */
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    backdrop-filter: blur(5px);
-}.modal-content {
-    background-color: #2c2c2c;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
+.muted.small { color: #aaa; font-size: 0.9rem; }
 
-#ad-slots-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+/* Page container & headers */
+.page-container { padding: 12px 18px; max-width: 980px; margin: 0 auto; }
+.page-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:10px; border-bottom: 1px solid #333; }
+.back-link { color:#9ecbff; text-decoration:none; font-weight:600; font-size:1rem; }
+.header-balance { background:#0a7a2a; color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; }
 
-.ad-slot {
-    background-color: #3a3a3a;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #555;
-}
+/* Ads Room */
+.modal { position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,0.8); }
+.modal-content { background:#2c2c2c; padding:24px; border-radius:12px; width:90%; max-width:520px; }
 
-.ad-slot button {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #28a745; /* Success Green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-}
+/* Ad/ad-slot styles */
+.activity-buttons { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:16px; }
+.ad-slot, .activity-card { background:#2f2f2f; padding:14px; border-radius:10px; border:1px solid #444; text-align:center; }
+.ad-slot button, .activity-card button { width:100%; padding:10px; border-radius:8px; border:none; background:#28a745; color:#fff; font-weight:700; cursor:pointer; }
+.ad-slot button:disabled, .activity-card button:disabled { background:#6c757d; cursor:not-allowed; }
+.ad-timer, .activity-timer { color:#ffcc00; margin-bottom:8px; font-weight:600; }
 
-.ad-slot button:hover:not(:disabled) {
-    background-color: #1e7e34;
-}
+/* Referral */
+.referral-box { display:flex; gap:8px; margin:12px 0; }
+.referral-box input { flex:1; padding:10px; border-radius:8px; border:1px solid #444; background:#1f1f1f; color:#fff; }
+.referral-stats { margin-top:12px; color:#ddd; }
 
-.ad-slot button:disabled {
-    background-color: #6c757d; /* Grey when cooling down */
-    cursor: not-allowed;
-}
-
-.ad-timer {
-    font-size: 0.9em;
-    color: #ffc107; /* Yellow for timer */
-    margin-bottom: 5px;
-}
-
-.close-button {
-    margin-top: 20px;
-    background-color: #dc3545;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* --- Activity Page Styles (for activity.html) --- */
-.page-container { 
-    padding: 20px; 
-    max-width: 900px; 
-    margin: 0 auto; 
-    color:#eaeaea; 
-}
-.page-header { 
-    display:flex; 
-    align-items:center; 
-    justify-content:space-between; 
-    gap:12px; 
-    padding: 10px 0;
-    border-bottom: 1px solid #333;
-}
-.back-link { 
-    color:#9ecbff; 
-    text-decoration:none; 
-    font-weight:600; 
-    font-size: 1.1em;
-}
-.header-balance { 
-    background:#0a7a2a; 
-    color:#fff; 
-    padding:8px 12px; 
-    border-radius:8px; 
-    font-weight:700; 
-}
-.activity-main { 
-    margin-top:20px; 
-}
-.activity-buttons { 
-    display:grid; 
-    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    gap:16px; 
-    margin-top:16px; 
-}
-.activity-card { 
-    background:#2f2f2f; 
-    padding:16px; 
-    border-radius:10px; 
-    border:1px solid #444; 
-    text-align: center;
-}
-.activity-card h3 { 
-    margin:0 0 8px 0; 
-    font-size:1.05em; 
-}
-.activity-timer { 
-    color:#ffcc00; 
-    margin-bottom:8px; 
-    font-weight: 500;
-}
-.activity-card button { 
-    width: 100%;
-    background:#007bff; 
-    border:none; 
-    padding:10px 12px; 
-    color:white; 
-    border-radius:6px; 
-    cursor:pointer; 
-    font-weight:700; 
-    transition: background-color 0.2s;
-}
-.activity-card button:hover:not(:disabled) {
-    background: #0056b3;
-}
-.activity-card button:disabled { 
-    background:#6c757d; 
-    cursor:not-allowed; 
+/* small responsive tweaks */
+@media (max-width:600px) {
+  .top-left-widget { font-size:1rem; padding:8px 10px; }
+  #top-right-widgets { gap:8px; right:12px; }
+  .action-button { padding:8px 10px; font-size:0.9rem; }
 }
