@@ -30,7 +30,7 @@
             <div class="ad-container">
                 <h3>Monetag Ad #1 (Rewarded Popup)</h3>
                 <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="1">Watch Ad</button>
-                <div class="ad-timer" data-ad-type="daily" data-ad-id="1">Loading...</div>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="1">Ready!</div>
                 <div class="reward-message" data-ad-type="daily" data-ad-id="1"></div>
             </div>
 
@@ -38,7 +38,7 @@
             <div class="ad-container">
                 <h3>Monetag Ad #2 (Rewarded Popup)</h3>
                 <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="2">Watch Ad</button>
-                <div class="ad-timer" data-ad-type="daily" data-ad-id="2">Loading...</div>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="2">Ready!</div>
                 <div class="reward-message" data-ad-type="daily" data-ad-id="2"></div>
             </div>
 
@@ -46,7 +46,7 @@
             <div class="ad-container">
                 <h3>Monetag Ad #3 (Rewarded Popup)</h3>
                 <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="3">Watch Ad</button>
-                <div class="ad-timer" data-ad-type="daily" data-ad-id="3">Loading...</div>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="3">Ready!</div>
                 <div class="reward-message" data-ad-type="daily" data-ad-id="3"></div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="ad-container">
                 <h3>Monetag Ad #1 (2x Interstitial)</h3>
                 <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="1">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity" data-ad-id="1">Loading...</div>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="1">Ready!</div>
                 <div class="reward-message" data-ad-type="activity" data-ad-id="1"></div>
             </div>
 
@@ -70,7 +70,7 @@
             <div class="ad-container">
                 <h3>Monetag Ad #2 (2x Interstitial)</h3>
                 <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="2">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity" data-ad-id="2">Loading...</div>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="2">Ready!</div>
                 <div class="reward-message" data-ad-type="activity" data-ad-id="2"></div>
             </div>
 
@@ -78,47 +78,30 @@
             <div class="ad-container">
                 <h3>Monetag Ad #3 (2x Interstitial)</h3>
                 <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="3">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity" data-ad-id="3">Loading...</div>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="3">Ready!</div>
                 <div class="reward-message" data-ad-type="activity" data-ad-id="3"></div>
             </div>
         </div>
     </div>
 
-    <!-- Activity Reward Room #1 (NEW) -->
+    <!-- Activity Reward Room #1 (NEW - COMBINED ADS) -->
     <div id="activity-room-1" class="reward-room">
         <h2>Activity Reward Room #1</h2>
-        <p>Watch 2 interstitial ads to earn 0.02 peso per button click.</p>
+        <p>Click once to watch all 6 interstitial ads and earn 0.02 peso.</p>
         <button id="close-activity-room-1" class="back-button">Back</button>
 
         <div class="ad-container-grid">
-            <!-- Ad Box 1 - Activity 1 Ads -->
+            <!-- Single Ad Box for Combined Ads -->
             <div class="ad-container">
-                <h3>Monetag Ad #1 (2x Interstitial)</h3>
-                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="1">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity1" data-ad-id="1">Loading...</div>
+                <h3>Watch All Monetag Ads (6x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="1">Watch All Ads</button>
+                <div class="ad-timer" data-ad-type="activity1" data-ad-id="1">Ready!</div>
                 <div class="reward-message" data-ad-type="activity1" data-ad-id="1"></div>
-            </div>
-
-            <!-- Ad Box 2 - Activity 1 Ads -->
-            <div class="ad-container">
-                <h3>Monetag Ad #2 (2x Interstitial)</h3>
-                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="2">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity1" data-ad-id="2">Loading...</div>
-                <div class="reward-message" data-ad-type="activity1" data-ad-id="2"></div>
-            </div>
-
-            <!-- Ad Box 3 - Activity 1 Ads -->
-            <div class="ad-container">
-                <h3>Monetag Ad #3 (2x Interstitial)</h3>
-                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="3">Watch Ads</button>
-                <div class="ad-timer" data-ad-type="activity1" data-ad-id="3">Loading...</div>
-                <div class="reward-message" data-ad-type="activity1" data-ad-id="3"></div>
             </div>
         </div>
     </div>
 
     <!-- Monetag SDKs - Important: Place these script tags at the END of the <body> for proper loading -->
-    <!-- These SDKs are shared for both Rewarded Popup and Rewarded Interstitial as per Monetag's design -->
     <script src='//libtl.com/sdk.js' data-zone='10276123' data-sdk='show_10276123'></script>
     <script src='//libtl.com/sdk.js' data-zone='10337795' data-sdk='show_10337795'></script>
     <script src='//libtl.com/sdk.js' data-zone='10337853' data-sdk='show_10337853'></script>
