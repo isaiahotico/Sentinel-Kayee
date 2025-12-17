@@ -3,47 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Ads Room (Static)</title>
+    <title>Reward Rooms App</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-    <header class="header">
-        <h1>Static GitHub Ads Showcase</h1>
-        <p>No login. No server. Just static content.</p>
-        
-        <!-- NEW BUTTON -->
-        <a href="rewards.html" class="activity-button">ACTIVITY REWARD ROOM</a>
-    </header>
+    <!-- Coin Display -->
+    <div id="coin-display">Coins: <span id="current-coins">0.00</span> peso</div>
 
-    <main id="ads-container">
-        <!-- Ad Card 1 -->
-        <div class="ad-card">
-            <h2>Project Promotion 1</h2>
-            <p>Check out our new open-source library! Fast, efficient, and zero dependencies.</p>
-            <a href="https://github.com/example/repo1" target="_blank" class="ad-link">View on GitHub</a>
+    <div class="main-content" id="main-app-content">
+        <h1>Welcome to the Reward Hub!</h1>
+        <p>Choose a room to earn rewards:</p>
+        <button id="open-daily-ads-room" class="room-button">Daily Ads Room Reward</button>
+        <button id="open-activity-room" class="room-button">Activity Reward Room</button>
+        <button id="open-activity-room-1" class="room-button">Activity Reward Room #1</button>
+    </div>
+
+    <!-- Daily Ads Room -->
+    <div id="daily-ads-room" class="reward-room">
+        <h2>Daily Ads Room</h2>
+        <button id="close-daily-ads-room" class="back-button">Back</button>
+
+        <div class="ad-container-grid">
+            <!-- Ad Box 1 - Daily Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #1 (Rewarded Popup)</h3>
+                <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="1">Watch Ad</button>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="1">Loading...</div>
+                <div class="reward-message" data-ad-type="daily" data-ad-id="1"></div>
+            </div>
+
+            <!-- Ad Box 2 - Daily Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #2 (Rewarded Popup)</h3>
+                <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="2">Watch Ad</button>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="2">Loading...</div>
+                <div class="reward-message" data-ad-type="daily" data-ad-id="2"></div>
+            </div>
+
+            <!-- Ad Box 3 - Daily Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #3 (Rewarded Popup)</h3>
+                <button class="watch-ad-btn" data-ad-type="daily" data-ad-id="3">Watch Ad</button>
+                <div class="ad-timer" data-ad-type="daily" data-ad-id="3">Loading...</div>
+                <div class="reward-message" data-ad-type="daily" data-ad-id="3"></div>
+            </div>
         </div>
+    </div>
 
-        <!-- Ad Card 2 -->
-        <div class="ad-card featured">
-            <h2>Featured Tool: Dev Helper</h2>
-            <p>Simplify your workflow with this amazing static tool. Completely client-side.</p>
-            <a href="https://github.com/example/repo2" target="_blank" class="ad-link">Get the Code</a>
+    <!-- Activity Reward Room (Original) -->
+    <div id="activity-room" class="reward-room">        <h2>Activity Reward Room</h2>
+        <p>Watch 2 interstitial ads to earn 0.02 peso per button click.</p>
+        <button id="close-activity-room" class="back-button">Back</button>
+
+        <div class="ad-container-grid">
+            <!-- Ad Box 1 - Activity Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #1 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="1">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="1">Loading...</div>
+                <div class="reward-message" data-ad-type="activity" data-ad-id="1"></div>
+            </div>
+
+            <!-- Ad Box 2 - Activity Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #2 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="2">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="2">Loading...</div>
+                <div class="reward-message" data-ad-type="activity" data-ad-id="2"></div>
+            </div>
+
+            <!-- Ad Box 3 - Activity Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #3 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity" data-ad-id="3">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity" data-ad-id="3">Loading...</div>
+                <div class="reward-message" data-ad-type="activity" data-ad-id="3"></div>
+            </div>
         </div>
+    </div>
 
-        <!-- Ad Card 3 -->
-        <div class="ad-card">
-            <h2>Community Event</h2>
-            <p>Join our static meetup documentation next week! Learn about static site generation.</p>
-            <a href="#" class="ad-link">Read More (Static Link)</a>
+    <!-- Activity Reward Room #1 (NEW) -->
+    <div id="activity-room-1" class="reward-room">
+        <h2>Activity Reward Room #1</h2>
+        <p>Watch 2 interstitial ads to earn 0.02 peso per button click.</p>
+        <button id="close-activity-room-1" class="back-button">Back</button>
+
+        <div class="ad-container-grid">
+            <!-- Ad Box 1 - Activity 1 Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #1 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="1">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity1" data-ad-id="1">Loading...</div>
+                <div class="reward-message" data-ad-type="activity1" data-ad-id="1"></div>
+            </div>
+
+            <!-- Ad Box 2 - Activity 1 Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #2 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="2">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity1" data-ad-id="2">Loading...</div>
+                <div class="reward-message" data-ad-type="activity1" data-ad-id="2"></div>
+            </div>
+
+            <!-- Ad Box 3 - Activity 1 Ads -->
+            <div class="ad-container">
+                <h3>Monetag Ad #3 (2x Interstitial)</h3>
+                <button class="watch-ad-btn" data-ad-type="activity1" data-ad-id="3">Watch Ads</button>
+                <div class="ad-timer" data-ad-type="activity1" data-ad-id="3">Loading...</div>
+                <div class="reward-message" data-ad-type="activity1" data-ad-id="3"></div>
+            </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 Static Showcase. All content is client-side only.</p>
-    </footer>
+    <!-- Monetag SDKs - Important: Place these script tags at the END of the <body> for proper loading -->
+    <!-- These SDKs are shared for both Rewarded Popup and Rewarded Interstitial as per Monetag's design -->
+    <script src='//libtl.com/sdk.js' data-zone='10276123' data-sdk='show_10276123'></script>
+    <script src='//libtl.com/sdk.js' data-zone='10337795' data-sdk='show_10337795'></script>
+    <script src='//libtl.com/sdk.js' data-zone='10337853' data-sdk='show_10337853'></script>
 
+    <!-- Your custom JavaScript -->
     <script src="app.js"></script>
 </body>
 </html>
