@@ -2,44 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sentinel KRo Earning App</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-
-  <!-- Login/Username Section -->
-  <div id="login-section">
-    <h2>Enter Your Username</h2>
-    <input type="text" id="username-input" placeholder="Enter a username" />
-    <button id="login-button" class="action-button">Login</button>
-    <p id="error-message" class="error-text"></p>
-  </div>
-
   <!-- TOP LEFT: Coin Display -->
-  <div id="coin-display-container" class="top-left-widget" style="display:none;">
+  <div id="coin-display-container" class="top-left-widget">
     <span id="coin-balance">0.00</span> PESO
   </div>
 
   <!-- TOP RIGHT: Buttons + Profile -->
-  <div id="top-right-widgets" style="display:none;">
-    <a id="activity-room-link" href="#" style="display:none;">
-      <button class="action-button">ACTIVITY REWARD ROOM</button>
-    </a>
-    <a id="referral-room-link" href="#" style="display:none;">
-      <button class="action-button">REFERRAL ROOM</button>
-    </a>
+  <div id="top-right-widgets">
+    <a id="activity-room-link" href="#" style="display:none;"><button class="action-button">ACTIVITY REWARD ROOM</button></a>
+    <a id="referral-room-link" href="#" style="display:none;"><button class="action-button">REFERRAL ROOM</button></a>
     <button id="ads-room-button" class="action-button" style="display:none;">Daily Ads Room Reward</button>
     <div id="profile-container" style="display:none;">
-      <span id="username-display">@loading...</span>
+      <span id="user-id-display">ID</span>
     </div>
   </div>
 
   <!-- VIEWS (Single Page App) -->
-  <main id="view-main" class="view" style="display:none;">
-    <div id="telegram-login-widget" class="login-center">
-      <h2>Welcome to Sentinel KRo Earning App!</h2>
+  <main id="view-main" class="view">
+    <div class="page-container">
+      <header class="page-header">
+        <h1>Sentinel KRo Earning App</h1>
+        <div id="main-balance" class="header-balance">0.00 PESO</div>
+      </header>
+      <main>
+        <p>Welcome — a permanent local id has been assigned to you. Use the buttons at the top-right to access rooms.</p>
+        <ul>
+          <li>Daily Ads Room — 0.01 PESO per ad, 2-hour cooldown.</li>
+          <li>Activity Reward Room — each button shows 2 interstitials; reward 0.02 PESO; 5-minute cooldown per button.</li>
+          <li>Referral Room — share your link; 10% referral gains are applied upon withdrawal (server-side logic expected).</li>
+        </ul>
+      </main>
     </div>
   </main>
 
@@ -88,7 +86,7 @@
           <h3>Referral Statistics</h3>
           <p>Total Referrals: <span id="total-referrals">0</span></p>
           <p>Pending Referral Earnings: <span id="pending-earnings">0.00 PESO</span></p>
-          <p class="note">You earn 10% of your referral's withdrawal amount (calculated on withdrawal).</p>
+          <p class="note">You earn 10% of your referral's withdrawal amount (applied by backend upon withdrawal).</p>
         </div>
       </main>
     </div>
