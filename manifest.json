@@ -1,22 +1,21 @@
 {
-  "name": "Indie Profile Component",
-  "short_name": "Profile",
-  "description": "A lightweight, indie-style profile component for your web app.",
-  "version": "1.0.0",
+  "name": "Sentinel KRo Earning App",
+  "short_name": "KRo Earn",
+  "description": "Earn PESO rewards by viewing ads and referring friends.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#008000",
   "icons": [
     {
-      "src": "images/icon-192x192.png",
+      "src": "icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "images/icon-512x512.png",
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  ]
 }
