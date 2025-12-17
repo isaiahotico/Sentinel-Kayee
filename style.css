@@ -9,7 +9,27 @@ body {
   overflow-x: hidden;
 }
 
-/* Top Left - coins */
+/* Login Section */
+#login-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+#username-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+#error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Coin Display */
 .top-left-widget {
   position: fixed;
   top: 20px;
@@ -40,16 +60,13 @@ body {
   gap: 10px;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
 }
-#profile-container:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
-#profile-avatar { width: 40px; height:40px; border-radius:50%; object-fit:cover; border: 2px solid rgba(255,255,255,0.2); }
-#telegram-username { font-weight:700; color:#fff; }
+#username-display { font-weight: 700; color: #fff; }
 
 /* Buttons */
 .action-button {
@@ -67,33 +84,31 @@ body {
 .view { padding: 24px; min-height: 100vh; box-sizing: border-box; }
 .login-center { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); text-align:center; }
 
-.muted.small { color: #aaa; font-size: 0.9rem; }
-
 /* Page container & headers */
 .page-container { padding: 12px 18px; max-width: 980px; margin: 0 auto; }
-.page-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:10px; border-bottom: 1px solid #333; }
-.back-link { color:#9ecbff; text-decoration:none; font-weight:600; font-size:1rem; }
-.header-balance { background:#0a7a2a; color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; }
+.page-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid #333; }
+.back-link { color: #9ecbff; text-decoration: none; font-weight: 600; font-size: 1rem; }
+.header-balance { background: #0a7a2a; color: #fff; padding: 8px 12px; border-radius: 8px; font-weight: 700; }
 
 /* Ads Room */
-.modal { position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,0.8); }
-.modal-content { background:#2c2c2c; padding:24px; border-radius:12px; width:90%; max-width:520px; }
+.modal { position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.8); }
+.modal-content { background: #2c2c2c; padding: 24px; border-radius: 12px; width: 90%; max-width: 520px; }
 
 /* Ad/ad-slot styles */
-.activity-buttons { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:16px; }
-.ad-slot, .activity-card { background:#2f2f2f; padding:14px; border-radius:10px; border:1px solid #444; text-align:center; }
-.ad-slot button, .activity-card button { width:100%; padding:10px; border-radius:8px; border:none; background:#28a745; color:#fff; font-weight:700; cursor:pointer; }
-.ad-slot button:disabled, .activity-card button:disabled { background:#6c757d; cursor:not-allowed; }
-.ad-timer, .activity-timer { color:#ffcc00; margin-bottom:8px; font-weight:600; }
+.activity-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+.ad-slot, .activity-card { background: #2f2f2f; padding: 14px; border-radius: 10px; border: 1px solid #444; text-align: center; }
+.ad-slot button, .activity-card button { width: 100%; padding: 10px; border-radius: 8px; border: none; background: #28a745; color: white; font-weight: 700; cursor: pointer; }
+.ad-slot button:disabled, .activity-card button:disabled { background: #6c757d; cursor: not-allowed; }
+.ad-timer, .activity-timer { color: #ffcc00; margin-bottom: 8px; font-weight: 600; }
 
 /* Referral */
-.referral-box { display:flex; gap:8px; margin:12px 0; }
-.referral-box input { flex:1; padding:10px; border-radius:8px; border:1px solid #444; background:#1f1f1f; color:#fff; }
-.referral-stats { margin-top:12px; color:#ddd; }
+.referral-box { display: flex; gap: 8px; margin: 12px 0; }
+.referral-box input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #1f1f1f; color: #fff; }
+.referral-stats { margin-top: 12px; color: #ddd; }
+.error-text { color: red; }
 
-/* small responsive tweaks */
 @media (max-width:600px) {
-  .top-left-widget { font-size:1rem; padding:8px 10px; }
-  #top-right-widgets { gap:8px; right:12px; }
-  .action-button { padding:8px 10px; font-size:0.9rem; }
+  .top-left-widget { font-size: 1rem; padding: 8px 10px; }
+  #top-right-widgets { gap: 8px; right: 12px; }
+  .action-button { padding: 8px 10px; font-size: 0.9rem; }
 }
