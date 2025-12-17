@@ -3,46 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indie Profile & Telegram Login</title>
+    <title>Sentinel KRo Earning App</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    
+    <!-- Include Telegram Login Widget Script -->
+    <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
 </head>
 <body>
 
-    <!-- Telegram Login Widget Script -->
-    <!-- Include this script FIRST, before any other scripts that might use Telegram data -->
-    <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
-
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
-    <!-- Uncomment if you are using Firebase Authentication -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js"></script> -->
-
-    <!-- Telegram Login Button - This is what the user clicks -->
-    <!-- !!! IMPORTANT: Replace 'YOUR_TELEGRAM_BOT_USERNAME' with your actual bot's username !!! -->
-    <!-- !!! IMPORTANT: Replace 'auth.html' with the page that will handle the callback, -->
-    <!--               or set data-redirect-url="YOUR_APP_URL" to redirect back to this page -->
-    <!--               if your callback logic is in app.js -->
-    <div id="telegram-login-button-container">
-        <script async data-telegram-login="YOUR_TELEGRAM_BOT_USERNAME"
-                data-size="large"
-                data-userpic="true"
-                data-login-text="Login with Telegram"
-                data-auth-url="http://localhost:5500/auth.html" /* Or your app's URL */
-                data-request-access="write">
-        </script>
+    <!-- TOP LEFT: Coin Display -->
+    <div id="coin-display-container" class="top-left-widget">
+        <span id="coin-balance">0.00</span> PESO
     </div>
 
-    <!-- Profile Component Structure -->
-    <div id="profile-container" style="display: none;"> <!-- Hidden initially until logged in -->
-        <img id="profile-avatar" src="images/default-avatar.png" alt="User Avatar">
-        <span id="telegram-username">@username</span>
-        <!-- You can add more elements here for future data like coins, status etc. -->
-        <!-- <span id="user-status">Online</span> -->
+    <!-- TOP RIGHT: Profile and Action Buttons -->
+    <div id="top-right-widgets">
+        
+        <!-- Activity Room Link -->
+        <a id="activity-room-link" href="activity.html" style="display:none;">
+            <button class="action-button">ACTIVITY REWARD ROOM</button>
+        </a>
+
+        <!-- Ads Room Button -->
+        <button id="ads-room-button" class="action-button" style="display: none;">
+            Daily Ads Room Reward
+        </button>
+        
+        <!-- Profile Container (Initially Hidden, shown after Telegram login) -->
+        <div id="profile-container" style="display: none;">
+            <img id="profile-avatar" src="default-avatar.png" alt="User Avatar">
+            <span id="telegram-username">@loading...</span>
+        </div>
     </div>
 
-    <!-- Your App's Main JavaScript -->
-    <script src="app.js"></script>
+    <!-- MAIN CONTENT AREA -->
+    <div id="app-content">
+        <!-- Telegram Login Widget -->
+        <div id="telegram-login-widget" class="login-center">
+            <h2>Log in with Telegram to start earning:</h2>
+            <script type="text/javascript">
+                // IMPORTANT: Replace 'Sentinel_KRo_earning_bot' with your actual bot username.
+                // data-onauth calls the JavaScript function TelegramLoginWidgetCallback defined in app.js
+                document.write(
+                    '<script data-telegram-login="Sentinel_KRo_earning_bot" data-size="large" data-userpic="false" data-onauth="TelegramLoginWidgetCallback(user)"></' + 'script>'
+                );
+            </script>
+        </div>
+    </div>
+
+    <!-- Ads Room Modal (Hidden by default) -->
+    <div id="ads-room-modal" class="modal">
+        <div class="modal-content">
+            <h2>Daily Ads Room</h2>
+            <p>Watch the ads below to earn 0.01 PESO each (5s view time).</p>
+            <div id="ad-slots-container">
+                <!-- Ad slots will be populated here by app.js -->
+            </div>
+            <button id="close-modal-button" class="close-button">Close</button>
+        </div>
+    </div>
+
+    <!-- Link to the main application logic -->
+    <script src="app.js" type="module"></script>
 </body>
 </html>
