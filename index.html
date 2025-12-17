@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indie Profile</title>
+    <title>Indie Profile & Telegram Login</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
+    <!-- Telegram Login Widget Script -->
+    <!-- Include this script FIRST, before any other scripts that might use Telegram data -->
+    <script async src="https://telegram.org/js/telegram-widget.js?22"></script>
+
     <!-- Firebase SDKs -->
-    <!-- NOTE: For production, it's highly recommended to use a bundler like Webpack or Parcel -->
-    <!-- to manage your dependencies and optimize your code. The direct script imports below -->
-    <!-- are for demonstration and simplicity. -->
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
+    <!-- Uncomment if you are using Firebase Authentication -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js"></script> -->
+
+    <!-- Telegram Login Button - This is what the user clicks -->
+    <!-- !!! IMPORTANT: Replace 'YOUR_TELEGRAM_BOT_USERNAME' with your actual bot's username !!! -->
+    <!-- !!! IMPORTANT: Replace 'auth.html' with the page that will handle the callback, -->
+    <!--               or set data-redirect-url="YOUR_APP_URL" to redirect back to this page -->
+    <!--               if your callback logic is in app.js -->
+    <div id="telegram-login-button-container">
+        <script async data-telegram-login="YOUR_TELEGRAM_BOT_USERNAME"
+                data-size="large"
+                data-userpic="true"
+                data-login-text="Login with Telegram"
+                data-auth-url="http://localhost:5500/auth.html" /* Or your app's URL */
+                data-request-access="write">
+        </script>
+    </div>
 
     <!-- Profile Component Structure -->
-    <div id="profile-container">
+    <div id="profile-container" style="display: none;"> <!-- Hidden initially until logged in -->
         <img id="profile-avatar" src="images/default-avatar.png" alt="User Avatar">
-        <span id="telegram-username">@loading...</span>
-        <!-- Optional: Add a status or other minimal info here if needed -->
-        <!-- <span id="user-status"></span> -->
+        <span id="telegram-username">@username</span>
+        <!-- You can add more elements here for future data like coins, status etc. -->
+        <!-- <span id="user-status">Online</span> -->
     </div>
 
     <!-- Your App's Main JavaScript -->
